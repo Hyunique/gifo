@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            img {
+                padding: 30px;
+            }
+
+            input {
+                margin: 30px;
+                width: 300px;
+                height: 30px;
+                border: none;
+                border-bottom: solid 1px salmon;
+            }
+
+            input::placeholder {
+                color: rgb(254, 167, 159);
+                font-size: 16px;
+            }
+
+            button {
+                width: 100px;
+                height: 40px;
+                border-radius: 20px;
+                border: none;
+                background-color: salmon;
+                color: white;
+                font-size: 18px;
+            }
+        </style>
+        <title>Gifo</title>
+    </head>
+
+    <body>
+
+        <img src="#" alt=""><br>
+
+        <input type="text" name="" id="searchInput" placeholder="Enter keyword to search GIF">
+        <button>Search</button>
+
+        <script>
+            fetchImg('blank book')
+            const btn = document.querySelector('button')
+            const input = document.querySelector('#searchInput')
+            const img = document.querySelector('img');
+            btn.addEventListener('click', () => fetchImg(input.value))
+
+            function fetchImg(keyword) {
+                fetch(`https://api.giphy.com/v1/gifs/translate?api_key=rW7cuKJ7grt57ZvWemWr3puXUwU0Zzdy&s=${keyword}`, { mode: 'cors' })
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (response) {
+                        img.src = response.data.images.original.url
+                    }).catch((error) => {
+                        showError(keyword)
+                    })
+            }
+
+            function showError(keyword) {
+                fetch(`https://api.giphy.com/v1/gifs/translate?api_key=rW7cuKJ7grt57ZvWemWr3puXUwU0Zzdy&s=failed`, { mode: 'cors' })
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (response) {
+                        img.src = response.data.images.original.url
+                    })
+                console.log(`Can't find GIF with entered keyword ${keyword}`)
+            }
+
+        </script>
+
+    </body>
+
+</html>
