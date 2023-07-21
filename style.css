@@ -14,12 +14,17 @@ input {
   width: 300px;
   height: 30px;
   border: none;
-  border-bottom: solid 1px salmon;
+  outline: none;
+  border-bottom: 1px solid salmon;
 }
 
 input::placeholder {
   color: rgb(254, 167, 159);
   font-size: 16px;
+}
+
+input:focus {
+  border-bottom: solid 2px rgb(226, 99, 85);
 }
 
 button {
