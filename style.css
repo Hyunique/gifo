@@ -1,0 +1,33 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  padding: 30px;
+}
+
+input {
+  margin: 30px;
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-bottom: solid 1px salmon;
+}
+
+input::placeholder {
+  color: rgb(254, 167, 159);
+  font-size: 16px;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: salmon;
+  color: white;
+  font-size: 18px;
+}
